@@ -16,15 +16,17 @@ const lines = [
 
 // [1, 2, 3, 4, 5, 6]
 const winningNumbers = lines[0].split(" ").map(Number);
+
 // [ [1, 5, 4, 2, 3, 6], [9, 6, 2, 7, 1, 5], [32, 9, 87, 33, 41, 60] ]
-const paiza6Lotteries = lines
-  .slice(2)
-  .map((lotter) => lotter.split(" ").map(Number));
+const paiza6Lotteries = lines.slice(2).map((lotter) => lotter.split(" ").map(Number));
 let winningCountArray = [];
 
 const checkWinNumber = (winNums, lotteries) => {
-  lotteries.forEach((winNums, lotteries) => {
+  lotteries.forEach((winNums) => {
     // 配列同士の共通する要素だけ取り出してwinningCountArrayに入れる
+    // lotteriesには数字が1個ずつはいっていく
+    // winningNumbersに、番号が含まれていないときは-1 となり -1! == -1 が成立しない
+    // "9 6 2 7 1 5",
     winningCountArray = winNums.filter(
       (lotteries) => winningNumbers.indexOf(lotteries) !== -1
     );
